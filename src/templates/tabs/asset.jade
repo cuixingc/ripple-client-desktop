@@ -1,0 +1,79 @@
+section.col-xs-12.content(ng-controller='AssetCtrl')
+  //- Show message if account has not been funded yet.
+  div(ng-show="!loadingAccount && !account.Balance && loadState.account && connected")
+    include ../tabs/banner/_unfunded
+
+  //- 1. Send form
+
+  form.row-padding-small.mode-form#AssetForm(name="AssetForm", role="form"
+    ng-show='mode=="form" && ((account.Balance && connected) || !onlineMode)')
+    .row.form-group
+      .col-xs-12.col-sm-6.col-md-5
+        label(for='asset_currencycode', l10n) Currency Code 
+        input.form-control#asset_currencycode(
+        name='asset_currencycode', type='text'
+        placeholder='Enter code of a asset'
+        ng-model='asset_currencycode')
+    .row.form-group
+      .col-xs-12.col-sm-6.col-md-5
+        label(for='asset_currencyname', l10n) Currency Name 
+        input.form-control#asset_currencyname(
+        name='asset_currencyname', type='text'
+        placeholder='Enter name of a asset'
+        ng-model='asset_currencyname')
+    .row.form-group
+      .col-xs-12.col-sm-6.col-md-5
+        label(for='asset_currencyamount', l10n) Currency Amount 
+        input.form-control#asset_currencyamount(
+        name='asset_currencyamount', type='number'
+        placeholder='0.00'
+        ng-model='asset_currencyamount')
+    .row.form-group
+      .col-xs-12.col-sm-8.col-md-6
+        a(href="", ng-click="show_symbol_field = true"
+          ng-hide="show_symbol_field", l10n) Show symbol of currency 
+    .row.form-group(ng-show='show_symbol_field')
+      .col-xs-12.col-sm-8.col-md-6
+        label(for='asset_currencysymbol', l10n) Currency Symbol&nbsp 
+        a(href="", ng-click="show_symbol_field = false", l10n) hide
+        input.form-control#asset_currencysymbol(
+        name='asset_currencysymbol', type='text'
+        ng-model='asset_currencysymbol')
+
+    .row(ng-show="onlineMode")
+      .col-xs-8.col-sm-7.col-md-6
+        rp-popup(rp-popup-on-open="grant()") 
+          button.btn.btn-block.btn-primary.submit(rp-popup-link 
+              ng-disabled='AssetForm.$invalid || asset_currencyamount == none || asset_currencyamount <= 0', l10n) Save Asset
+          div.connectModal(rp-popup-content, ng-show='true')
+            .modal-header
+              .navbar-brand.hidden-sm.modal-logo#logo
+              .modal-title(l10n) Connect
+            .modal-body
+              div.modal-prompt(l10n) 
+                div(l10n-inc) You are adding a new asset.
+              div.modal-buttons
+                button.modal-btn.btn.btn-default.btn-success.btn-md(data-dismiss="modal", ng-click="grant_confirmed()",
+                  rp-spinner='{{loading ? 4 : null}}', ng-disabled="loading")
+                  span(ng-show="loading", l10n) Loading...
+                  span(ng-hide="loading", l10n) Confirm
+                button.modal-btn.btn.btn-cancel.btn-md.btn-cancel(data-dismiss="modal",
+                  ng-click='toggle_form()', ng-hide="loading", l10n) cancel
+      .col-xs-4.col-sm-3.col-md-3
+        button.btn.btn-block.btn-cancel(type="button" 
+            ng-click='toggle_form()', l10n) cancel
+
+  group.mode-ripplerror(ng-show='mode=="rippleerror" && account.Balance && connected')
+    rp-transaction-status(rp-engine-result="{{engine_result}}", rp-engine-result-message="{{engine_result_message}}", rp-accepted="{{engine_status_accepted}}")
+
+  group.mode-status(ng-show='mode=="status" && account.Balance && connected')
+    include ../messages/sendconvert/_confirmation
+    group.actions
+      hr
+      div(class="actionLink")
+        a(href="", ng-click="reset()", l10n) Create another asset
+      div(class="actionLink")
+        a(href="", ng-click="reset_goto('balance')", l10n) Back to balance
+      hr
+
+
