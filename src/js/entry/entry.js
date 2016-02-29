@@ -97,7 +97,7 @@ window.lang = (function(){
   };
   return resolveLanguage(store.get('ripple_language')) ||
     resolveLanguage(window.navigator.userLanguage || window.navigator.language) ||
-    'en';
+    'zh_CN';
 })();
 
 // Prepare tab modules
@@ -170,6 +170,25 @@ app.config(['$routeProvider', function ($routeProvider) {
       // This line redirects user to root (login) page
       var port = location.port.length > 0 ? ":" + location.port : "";
       location.href = location.protocol + '//' + location.hostname  + port + location.pathname;
+    }
+  });
+  
+  // activate account switcher
+  $routeProvider.when('/activate/:address', {
+    redirectTo: function(routeParams, path, search){
+      var address = routeParams.address;
+      var port = location.port.length > 0 ? ":" + location.port : "";
+      if (address) {
+      	//console.log(Options.activate_url);
+        $.get(Options.activate_url + address)
+          .success(function() {
+          	alert("Activated successfully.");
+          	location.href = location.protocol + '//' + location.hostname  + port + '/#/balance';
+          }).error(function() {
+          	alert("Activated failed.");
+          	location.href = location.protocol + '//' + location.hostname  + port + '/#/balance';
+          });
+      }
     }
   });
 

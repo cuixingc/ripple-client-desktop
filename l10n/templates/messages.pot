@@ -152,6 +152,22 @@ msgstr "Welcome to {{productName}}, a global value exchange"
 msgid "Version: {{version}}"
 msgstr "Version: {{version}}"
 
+#: src/templates/client/layout.jade:19
+msgid "Terms of Use"
+msgstr "Terms of Use"
+
+#: src/templates/client/layout.jade:20
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+#: src/templates/client/layout.jade:21
+msgid "Support"
+msgstr "Support"
+
+#: src/templates/client/layout.jade:22
+msgid "Bug reports"
+msgstr "Bug reports"
+
 #: src/templates/directives/signedTransaction.jade:4
 msgid "Transaction saved: {{fileName}}."
 msgstr "Transaction saved: {{fileName}}."
@@ -1750,6 +1766,10 @@ msgstr "Amount field is required"
 msgid "XRP can be sent without extending trust. If you really want to trust in XRP, please use XRR currency code."
 msgstr "XRP can be sent without extending trust. If you really want to trust in XRP, please use XRR currency code."
 
+#: src/templates/tabs/trust.jade:87
+msgid "Counterparty Address"
+msgstr "Counterparty Address"
+
 #: src/templates/tabs/trust.jade:104
 msgid "Account does not meet the minimum XRP reserve."
 msgstr "Account does not meet the minimum XRP reserve."
@@ -1984,6 +2004,14 @@ msgstr "Before trying again, please ensure that the transaction has not been exe
 #: src/templates/messages/sendconvert/_waiting.jade:3
 msgid "Sending transaction to the Ripple network"
 msgstr "Sending transaction to the Ripple network"
+
+#: src/templates/tabs/banner/_unfunded.jade:2
+msgid "Your Ripple account is not active. To activate it, you'll need to send at least 20 XRP to ({{address}})."
+msgstr "Your Ripple account is not active. To activate it, you'll need to send at least 20 XRP to ({{address}})."
+
+#: src/templates/tabs/banner/_unfunded.jade:4
+msgid "Click to activate for free"
+msgstr "Click to activate for free"
 
 #: src/templates/tabs/history/_effects.jade:4
 #: src/templates/tabs/history/_effects.jade:19
