@@ -48,7 +48,7 @@ msgstr "已连接到网络."
 #: src/templates/client/_navbar.jade:40
 #: src/templates/tabs/history.jade:218
 msgid "{{copyTooltip}}"
-msgstr "已拷贝"
+msgstr "点击拷贝您的账户地址"
 
 #: src/templates/client/_navbar.jade:48
 #: src/templates/tabs/balance.jade:11
@@ -167,14 +167,6 @@ msgstr "帮助中心"
 #: src/templates/client/layout.jade:22
 msgid "Bug reports"
 msgstr "问题报告"
-
-#: src/templates/client/layout.jade:29
-msgid "more..."
-msgstr "更多..."
-
-#: src/templates/client/layout.jade:33
-msgid "Select a language"
-msgstr "选择语言"
 
 #: src/templates/directives/signedTransaction.jade:4
 msgid "Transaction saved: {{fileName}}."
@@ -1774,6 +1766,10 @@ msgstr "金额为必填项"
 msgid "XRP can be sent without extending trust. If you really want to trust in XRP, please use XRR currency code."
 msgstr "发送 XRP 并不需要设置信任额度。如果真的想设置对 XRP 的信任，请尝试使用货币代码 XRR."
 
+#: src/templates/tabs/trust.jade:87
+msgid "Counterparty Address"
+msgstr "Counterparty Address"
+
 #: src/templates/tabs/trust.jade:104
 msgid "Account does not meet the minimum XRP reserve."
 msgstr "账户没有达到所需要的最低 XRP 保留额度。"
@@ -1944,6 +1940,79 @@ msgstr "发自地址：:"
 msgid "Sorry, we don't have an info page layout for this transaction type yet."
 msgstr "不好意思，这类交易的信息页面还没有准备好。"
 
+#: src/templates/messages/sendconvert/_confirmation.jade:4
+msgid "Transaction pending."
+msgstr "交易进行中."
+
+#: src/templates/messages/sendconvert/_confirmation.jade:6
+msgid "Transaction successful"
+msgstr "交易成功"
+
+#: src/templates/messages/sendconvert/_confirmation.jade:8
+#: src/templates/messages/sendconvert/_confirmation.jade:11
+#: src/templates/messages/sendconvert/_confirmation.jade:16
+#: src/templates/messages/sendconvert/_confirmation.jade:21
+#: src/templates/messages/sendconvert/_confirmation.jade:30
+#: src/templates/messages/sendconvert/_confirmation.jade:37
+#: src/templates/messages/sendconvert/_localerror.jade:5
+#: src/templates/messages/sendconvert/_localerror.jade:8
+#: src/templates/messages/sendconvert/_localerror.jade:11
+#: src/templates/messages/sendconvert/_localerror.jade:14
+msgid "Transaction failed"
+msgstr "交易失败"
+
+#: src/templates/messages/sendconvert/_confirmation.jade:23
+msgid "Error code: The destination account does not exist [tecNO_DST]."
+msgstr "Error code: 目标账户不存在 [tecNO_DST]."
+
+#: src/templates/messages/sendconvert/_confirmation.jade:34
+msgid "Your transaction failed: {{engine_result_message}}"
+msgstr "交易失败: {{engine_result_message}}"
+
+#: src/templates/messages/sendconvert/_localerror.jade:6
+msgid "Error code: The account you&#39;re trying to send to does not exist [noDest]."
+msgstr "Error code: 你要发送的账户不存在 [noDest]."
+
+#: src/templates/messages/sendconvert/_localerror.jade:9
+msgid "Error code: Ripple was unable to find a path between you and the destination account [noPath]."
+msgstr "Error code: Ripple未能找到你和目标账户间的路径 [noPath]."
+
+#: src/templates/messages/sendconvert/_localerror.jade:12
+msgid "Error code: This transaction failed because it exceeded the maximum network fee. [maxfeeExceeded]."
+msgstr "Error code: 交易因为超出最大网络费用而失败. [maxfeeExceeded]."
+
+#: src/templates/messages/sendconvert/_localerror.jade:15
+msgid "Error code: The transaction was rejected by the Ripple network [invalidTransaction]."
+msgstr "Error code: 交易被网络拒绝 [invalidTransaction]."
+
+#: src/templates/messages/sendconvert/_localerror.jade:17
+msgid "Account unlock failed"
+msgstr "账户解锁失败"
+
+#: src/templates/messages/sendconvert/_localerror.jade:18
+msgid "Your account could not be unlocked. Please try again later."
+msgstr "账户解锁失败，请重试."
+
+#: src/templates/messages/sendconvert/_localerror.jade:20
+msgid "Sorry, an error occurred while submitting your transaction.Make sure you are connected to the Internet and try again later."
+msgstr "提交交易时出错了，请确认已连接到Internet，在重试."
+
+#: src/templates/messages/sendconvert/_localerror.jade:22
+msgid "Before trying again, please ensure that the transaction has not been executed already."
+msgstr "在重试前请确认你的交易确实没有执行成功."
+
+#: src/templates/messages/sendconvert/_waiting.jade:3
+msgid "Sending transaction to the Ripple network"
+msgstr "正在发送交易到Ripple网络中"
+
+#: src/templates/tabs/banner/_unfunded.jade:2
+msgid "Your Ripple account is not active. To activate it, you'll need to send at least 20 XRP to ({{address}})."
+msgstr "您的账户未激活. 至少发送20 XRP到您的账户地址：{{address}}，才能激活."
+
+#: src/templates/tabs/banner/_unfunded.jade:3
+msgid "Click to activate for free"
+msgstr "点击免费激活"
+
 #: src/templates/tabs/history/_effects.jade:4
 #: src/templates/tabs/history/_effects.jade:19
 msgid "You sold{{1}}for{{2}}"
@@ -2010,71 +2079,6 @@ msgstr "You've changed the regular key{{1}}{{2}}"
 #: src/templates/tabs/history/_effects.jade:111
 msgid "You've removed the regular key {{effect.address}}"
 msgstr "You've removed the regular key {{effect.address}}"
-
-#: src/templates/messages/sendconvert/_confirmation.jade:4
-msgid "Transaction pending."
-msgstr "交易进行中."
-
-#: src/templates/messages/sendconvert/_confirmation.jade:6
-msgid "Transaction successful"
-msgstr "交易成功"
-
-#: src/templates/messages/sendconvert/_confirmation.jade:8
-#: src/templates/messages/sendconvert/_confirmation.jade:11
-#: src/templates/messages/sendconvert/_confirmation.jade:16
-#: src/templates/messages/sendconvert/_confirmation.jade:21
-#: src/templates/messages/sendconvert/_confirmation.jade:30
-#: src/templates/messages/sendconvert/_confirmation.jade:37
-#: src/templates/messages/sendconvert/_localerror.jade:5
-#: src/templates/messages/sendconvert/_localerror.jade:8
-#: src/templates/messages/sendconvert/_localerror.jade:11
-#: src/templates/messages/sendconvert/_localerror.jade:14
-msgid "Transaction failed"
-msgstr "交易失败"
-
-#: src/templates/messages/sendconvert/_confirmation.jade:23
-msgid "Error code: The destination account does not exist [tecNO_DST]."
-msgstr "Error code: 目标账户不存在 [tecNO_DST]."
-
-#: src/templates/messages/sendconvert/_confirmation.jade:34
-msgid "Your transaction failed: {{engine_result_message}}"
-msgstr "交易失败: {{engine_result_message}}"
-
-#: src/templates/messages/sendconvert/_localerror.jade:6
-msgid "Error code: The account you&#39;re trying to send to does not exist [noDest]."
-msgstr "Error code: 你要发送的账户不存在 [noDest]."
-
-#: src/templates/messages/sendconvert/_localerror.jade:9
-msgid "Error code: Ripple was unable to find a path between you and the destination account [noPath]."
-msgstr "Error code: Ripple未能找到你和目标账户间的路径 [noPath]."
-
-#: src/templates/messages/sendconvert/_localerror.jade:12
-msgid "Error code: This transaction failed because it exceeded the maximum network fee. [maxfeeExceeded]."
-msgstr "Error code: 交易因为超出最大网络费用而失败. [maxfeeExceeded]."
-
-#: src/templates/messages/sendconvert/_localerror.jade:15
-msgid "Error code: The transaction was rejected by the Ripple network [invalidTransaction]."
-msgstr "Error code: 交易被网络拒绝 [invalidTransaction]."
-
-#: src/templates/messages/sendconvert/_localerror.jade:17
-msgid "Account unlock failed"
-msgstr "账户解锁失败"
-
-#: src/templates/messages/sendconvert/_localerror.jade:18
-msgid "Your account could not be unlocked. Please try again later."
-msgstr "账户解锁失败，请重试."
-
-#: src/templates/messages/sendconvert/_localerror.jade:20
-msgid "Sorry, an error occurred while submitting your transaction.Make sure you are connected to the Internet and try again later."
-msgstr "提交交易时出错了，请确认已连接到Internet，在重试."
-
-#: src/templates/messages/sendconvert/_localerror.jade:22
-msgid "Before trying again, please ensure that the transaction has not been executed already."
-msgstr "在重试前请确认你的交易确实没有执行成功."
-
-#: src/templates/messages/sendconvert/_waiting.jade:3
-msgid "Sending transaction to the Ripple network"
-msgstr "正在发送交易到Ripple网络中"
 
 #: src/templates/tabs/settings/_navbar.jade:5
 msgid "Account flags"
