@@ -109,7 +109,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     .error(rp-error-on='rpDest', l10n) Please enter a valid Ripple address or contact.
               .row
                 .col-xs-12.form-group
-                  label(for='trust_amount', l10n) Amount
+                  label(for='trust_amount', l10n) Trust Limit
                   .row
                     .col-md-3.col-sm-4.col-xs-3
                       input.form-control.value#trust_amount(name='trust_amount'
@@ -135,7 +135,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                       | Currency field is required
               .row
                 .col-sm-3.allow-rippling.form-group-sm
-                  label(for="tfSetfAuth") Set Authorization
+                  label(for="tfSetfAuth", l10n) Set Authorization
                   i.fa.fa-question-circle.help-icon(
                     rp-popover
                     rp-popover-placement="bottom"
@@ -148,7 +148,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     option(value='') Default
                     option(value='tfSetfAuth') Authorize trust line
                 .col-sm-3.allow-rippling.form-group-sm
-                  label(for="allowrippling") Allow Rippling
+                  label(for="allowrippling", l10n) Allow Rippling
                   i.fa.fa-question-circle.help-icon(
                     rp-popover
                     rp-popover-placement="bottom"
@@ -162,7 +162,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     option(value='tfClearNoRipple') Allow Rippling
                     option(value='tfSetNoRipple') Disallow Rippling
                 .col-sm-3.allow-rippling.form-group-sm
-                  label(for="trust_allowrippling") Set Freeze
+                  label(for="trust_allowrippling", l10n) Set Freeze
                   i.fa.fa-question-circle.help-icon(
                     rp-popover
                     rp-popover-placement="bottom"

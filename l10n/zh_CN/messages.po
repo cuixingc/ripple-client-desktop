@@ -110,13 +110,13 @@ msgstr "失败的交易"
 msgid "View Full History"
 msgstr "查看全部历史记录"
 
-#: src/templates/client/_navbar.jade:112
-msgid "{{1}} Settings"
-msgstr "{{1}} 设置"
+#: src/templates/client/_navbar.jade:114
+msgid "Settings"
+msgstr "设置"
 
-#: src/templates/client/_navbar.jade:116
-msgid "{{1}} Log Out"
-msgstr "{{1}} 退出"
+#: src/templates/client/_navbar.jade:118
+msgid "Log Out"
+msgstr "退出"
 
 #: src/templates/client/_navbar.jade:123
 #: src/templates/tabs/trust.jade:73
@@ -154,7 +154,7 @@ msgstr "版本: {{version}}"
 
 #: src/templates/client/layout.jade:19
 msgid "Terms of Use"
-msgstr 使用条款"
+msgstr "使用条款"
 
 #: src/templates/client/layout.jade:20
 msgid "Privacy Policy"
@@ -832,7 +832,6 @@ msgstr "发行人"
 
 #: src/templates/tabs/history.jade:201
 #: src/templates/tabs/trade.jade:403
-#: src/templates/tabs/trust.jade:112
 msgid "Amount"
 msgstr "金额"
 
@@ -879,7 +878,7 @@ msgstr "冷钱包"
 
 #: src/templates/tabs/login.jade:13
 msgid "Submit Txn"
-msgstr "Submit Txn"
+msgstr "提交历史交易"
 
 #: src/templates/tabs/login.jade:15
 msgid "Server Settings"
@@ -900,8 +899,8 @@ msgid "Create new account"
 msgstr "创建新账户"
 
 #: src/templates/tabs/login.jade:27
-msgid "Select{{walletfile ? \"ed\" : \"\"}} account file {{walletfile}}"
-msgstr "{{walletfile ? \"已选择\" : \"选择\"}} 账户文件 {{walletfile}}"
+msgid "Select{{walletfile ? \\\"ed\\\" : \\\"\\\"}} account file {{walletfile}}"
+msgstr "{{walletfile ? \"已选择\" : \"选择\"}}账户文件 {{walletfile}}"
 
 #: src/templates/tabs/login.jade:30
 msgid "Select account file"
@@ -1753,6 +1752,7 @@ msgid "Currency"
 msgstr "货币类型"
 
 #: src/templates/tabs/trust.jade:74
+#: src/templates/tabs/trust.jade:112
 msgid "Trust Limit"
 msgstr "信任额度"
 
@@ -1768,7 +1768,7 @@ msgstr "发送 XRP 并不需要设置信任额度。如果真的想设置对 XRP
 
 #: src/templates/tabs/trust.jade:87
 msgid "Counterparty Address"
-msgstr "Counterparty Address"
+msgstr "托管方地址"
 
 #: src/templates/tabs/trust.jade:104
 msgid "Account does not meet the minimum XRP reserve."

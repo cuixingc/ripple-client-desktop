@@ -109,13 +109,13 @@ nav.navbar(role="navigation", ng-controller="NavbarCtrl", ng-cloak)
           li.settings.dropdown
             a.dropdown-toggle.fa.fa-cog(data-toggle="dropdown")
             ul.dropdown-menu
-              li: a(href="#/security", ng-hide="readOnly", l10n)
+              li: a(href="#/security", ng-hide="readOnly")
                 i.icon-settings
-                |  Settings
+                span(l10n) Settings
               li.divider
-              li: a.logout(ng-click='logout()', l10n)
+              li: a.logout(ng-click='logout()')
                 i.icon-logout
-                |  Log Out
+                span(l10n) Log Out
   .subnav
     .container
       ul(ng-show="$route.current.mainMenu == 'wallet'")

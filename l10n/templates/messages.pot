@@ -110,13 +110,13 @@ msgstr "Failed transaction"
 msgid "View Full History"
 msgstr "View Full History"
 
-#: src/templates/client/_navbar.jade:112
-msgid "{{1}} Settings"
-msgstr "{{1}} Settings"
+#: src/templates/client/_navbar.jade:114
+msgid "Settings"
+msgstr "Settings"
 
-#: src/templates/client/_navbar.jade:116
-msgid "{{1}} Log Out"
-msgstr "{{1}} Log Out"
+#: src/templates/client/_navbar.jade:118
+msgid "Log Out"
+msgstr "Log Out"
 
 #: src/templates/client/_navbar.jade:123
 #: src/templates/tabs/trust.jade:73
@@ -832,7 +832,6 @@ msgstr "Issuer"
 
 #: src/templates/tabs/history.jade:201
 #: src/templates/tabs/trade.jade:403
-#: src/templates/tabs/trust.jade:112
 msgid "Amount"
 msgstr "Amount"
 
@@ -1753,6 +1752,7 @@ msgid "Currency"
 msgstr "Currency"
 
 #: src/templates/tabs/trust.jade:74
+#: src/templates/tabs/trust.jade:112
 msgid "Trust Limit"
 msgstr "Trust Limit"
 
@@ -1790,6 +1790,10 @@ msgstr "Please enter a valid Ripple address or contact."
 msgid "Currency field is required"
 msgstr "Currency field is required"
 
+#: src/templates/tabs/trust.jade:138
+msgid "Set Authorization"
+msgstr "Set Authorization"
+
 #: src/templates/tabs/trust.jade:139
 msgid ""Set Authorization""
 msgstr ""Set Authorization""
@@ -1799,9 +1803,17 @@ msgstr ""Set Authorization""
 msgid ""{{setAuthMessage}} <a href=https://ripple.com/build/transactions/#trustset-flags target=_blank>More information</a>""
 msgstr ""{{setAuthMessage}} <a href=https://ripple.com/build/transactions/#trustset-flags target=_blank>More information</a>""
 
+#: src/templates/tabs/trust.jade:151
+msgid "Allow Rippling"
+msgstr "Allow Rippling"
+
 #: src/templates/tabs/trust.jade:152
 msgid ""Allow Rippling""
 msgstr ""Allow Rippling""
+
+#: src/templates/tabs/trust.jade:165
+msgid "Set Freeze"
+msgstr "Set Freeze"
 
 #: src/templates/tabs/trust.jade:166
 msgid ""Set Freeze""
