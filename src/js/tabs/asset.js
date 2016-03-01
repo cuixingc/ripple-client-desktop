@@ -29,7 +29,8 @@ AssetTab.prototype.angular = function (module) {
     
         function newAsset() {
 			// TODO we should get address of gate from config or others
-			var gatewayd_address = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh';
+			//var gatewayd_address = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh';
+			var gatewayd_address = Options.gateway_address;
             var address = $id.account;
             var secret = keychain.requestSecret($id.account);
             
