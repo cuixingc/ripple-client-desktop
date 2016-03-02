@@ -69,7 +69,7 @@ section.col-xs-12.content(ng-controller="RegisterCtrl")
           rp-popover-placement="bottom"
           rp-popover-title="Using a secret key"
           rp-popover-trigger="hover"
-          l10n-data-content="This will create a new Ripple account from your secret key.")
+          l10n-data-content="This will create a new ZXCoin account from your secret key.")
 
           input.form-control#secretKey(type="password", name="secretKey"
           ng-model="secretKey", rp-master-key, required, rp-focus)
@@ -108,7 +108,7 @@ section.col-xs-12.content(ng-controller="RegisterCtrl")
             a(href="", l10n) Show
           a(href="", ng-click="showPassword=false", ng-show="showPassword==true", l10n) Hide
       .secret
-        p.important(l10n) Ripple address
+        p.important(l10n) ZXCoin address
         p.key {{address}}
         p.important(l10n) Secret key:
         p.key(ng-show="showSecret==true") {{keyOpen}}

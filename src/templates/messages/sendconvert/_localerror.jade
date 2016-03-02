@@ -6,13 +6,13 @@ group(ng-switch="error_type")
     p(l10n) Error code: The account you&#39;re trying to send to does not exist [noDest].
   group.result-error(ng-switch-when='noPath')
     h2.tx-status(l10n) Transaction failed
-    p(l10n) Error code: Ripple was unable to find a path between you and the destination account [noPath].
+    p(l10n) Error code: ZXCoin was unable to find a path between you and the destination account [noPath].
   group.result-error(ng-switch-when='maxFeeExceeded')
     h2.tx-status(l10n) Transaction failed
     p(l10n) Error code: This transaction failed because it exceeded the maximum network fee. [maxfeeExceeded].
   group.result-error(ng-switch-when='invalidTransaction')
     h2.tx-status(l10n) Transaction failed
-    p(l10n) Error code: The transaction was rejected by the Ripple network [invalidTransaction].
+    p(l10n) Error code: The transaction was rejected by the ZXCoin network [invalidTransaction].
   group.result-error(ng-switch-when='unlockFailed')
     h2.tx-status(l10n) Account unlock failed
     p(l10n) Your account could not be unlocked. Please try again later.

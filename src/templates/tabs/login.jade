@@ -54,13 +54,13 @@ section.col-xs-12.content(ng-controller="LoginCtrl")
           h2(l10n) Open account
 
           .form-group
-            label(for='readOnlyAddress', l10n) Enter Ripple Address
+            label(for='readOnlyAddress', l10n) Enter ZXCoin Address
             input.form-control(name='readOnly', ng-model='readOnly'
               rp-focus-on-empty, required, rp-dest, rp-dest-address)
             br
             .errorGroup(rp-errors='readOnly')
               .error(rp-error-on='rpDest', l10n)
-                | Input should be a valid Ripple address.
+                | Input should be a valid ZXCoin address.
 
           .submit-btn-container
             button.btn.btn-submit.btn-block.btn-success(type='submit', ng-disabled="readOnlyForm.$invalid || ajax_loading", rp-spinner="{{ajax_loading ? 4 : null}}")
@@ -73,13 +73,13 @@ section.col-xs-12.content(ng-controller="LoginCtrl")
           h2(l10n) View cold wallet
 
           .form-group
-            label(for='coldWalletAddress', l10n) Enter Ripple Address
+            label(for='coldWalletAddress', l10n) Enter ZXCoin Address
             input.form-control(name='coldWallet', ng-model='coldWallet'
               rp-focus-on-empty, required, rp-dest, rp-dest-address)
             br
             .errorGroup(rp-errors='coldWallet')
               .error(rp-error-on='rpDest', l10n)
-                | Input should be a valid Ripple address.
+                | Input should be a valid ZXCoin address.
 
           .submit-btn-container
             button.btn.btn-submit.btn-block.btn-success(type='submit', ng-disabled="coldWalletForm.$invalid || ajax_loading", rp-spinner="{{ajax_loading ? 4 : null}}")

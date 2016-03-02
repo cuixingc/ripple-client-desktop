@@ -10,7 +10,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
         //- N5. Notifications for connect new account
         group.mode-granted.wide(ng-show='mode=="granted" && account.Balance')
           group.pending(ng-show='tx_result=="pending"')
-            h2.tx-status(l10n) Adding a trust line to your Ripple account...
+            h2.tx-status(l10n) Adding a trust line to your ZXCoin account...
           group.result-success(ng-show='tx_result=="cleared"')
             h2.tx-status(l10n) Trust Line created.
           group.result-error(ng-show='tx_result=="error"')
@@ -25,7 +25,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
               span(ng-switch-when="terNO_LINE", l10n) You have no counterparty in this currency.
               span(ng-switch-when="tecINSUF_RESERVE_LINE", l10n) Insufficient reserve to add a trust line.
               span(ng-switch-when="tecNO_LINE_INSUF_RESERVE", l10n) You must have at
-                |  least {{account.reserve_to_add_trust | rpamount:0}} XRP to add a trust line.&#32;
+                |  least {{account.reserve_to_add_trust | rpamount:0}} ZXC to add a trust line.&#32;
                 a(href="http://ripple.com/help/#reserve", l10n) Read more.
               span(ng-switch-default, l10n) Trust Line creation failed to clear,
                 |  reason: {{engine_result_message}}
@@ -59,7 +59,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
 
       .col-sm-12(ng-show='addform_visible && !can_add_trust')
         .alert.alert-warning(l10n) You must have at least
-          strong  {{account.reserve_to_add_trust | rpamount:0}} XRP
+          strong  {{account.reserve_to_add_trust | rpamount:0}} ZXC
           |  to add a new trust line.&#32;
           a(href="https://ripple.com/build/reserves/", target="_blank") More information
     .row
@@ -80,8 +80,8 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                 .error(rp-error-on='required', l10n) Amount field is required
               .errorGroup(rp-errors='trust_amount_currency')
                 .error(rp-error-on='rpNotXrp', l10n)
-                  | XRP can be sent without extending trust. If you really want
-                  |  to trust in XRP, please use XRR currency code.
+                  | ZXC can be sent without extending trust. If you really want
+                  |  to trust in ZXC, please use XRR currency code.
               .row
                 .col-xs-12.col-sm-10.col-md-9.form-group
                   label(for="trust_counterparty") Counterparty Address
@@ -101,12 +101,12 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                       .success(ng-show='counterparty != counterparty_address && counterparty_name && !error_account_reserve')
                         | {{counterparty_address}}
                       .error(ng-show='error_account_reserve')
-                        span(l10n) Account does not meet the minimum XRP reserve.&#32;
+                        span(l10n) Account does not meet the minimum ZXC reserve.&#32;
                         a(href="https://ripple.com/wiki/Account_Creation", target="_blank", l10n)
                           | More information
-                    .error(rp-error-on='required', l10n) Please enter a Ripple address or contact.
+                    .error(rp-error-on='required', l10n) Please enter a ZXCoin address or contact.
                     .error(rp-error-on='rpNotMe', l10n) You've entered your own address.
-                    .error(rp-error-on='rpDest', l10n) Please enter a valid Ripple address or contact.
+                    .error(rp-error-on='rpDest', l10n) Please enter a valid ZXCoin address or contact.
               .row
                 .col-xs-12.form-group
                   label(for='trust_amount', l10n) Amount
@@ -129,8 +129,8 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     .error(rp-error-on='required', l10n) Amount field is required
                   .errorGroup(rp-errors='trust_amount_currency')
                     .error(rp-error-on='rpNotXrp', l10n)
-                      | XRP can be sent without extending trust. If you really want
-                      |  to trust in XRP, please use XRR currency code.
+                      | ZXC can be sent without extending trust. If you really want
+                      |  to trust in ZXC, please use XRR currency code.
                     .error(rp-error-on='required', l10n)
                       | Currency field is required
               .row
@@ -159,8 +159,8 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     name='trust_allowrippling',
                     ng-model='ripplingFlag', required)
                     option(value='') Choose rippling
-                    option(value='tfClearNoRipple') Allow Rippling
-                    option(value='tfSetNoRipple') Disallow Rippling
+                    option(value='tfClearNoZXCoin') Allow Rippling
+                    option(value='tfSetNoZXCoin') Disallow Rippling
                 .col-sm-3.allow-rippling.form-group-sm
                   label(for="trust_allowrippling") Set Freeze
                   i.fa.fa-question-circle.help-icon(
@@ -203,7 +203,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
               .row.delete-trust
                 .col-xs-6.col-sm-6.col-md-8.col-lg-9(ng-show='balance !== "0" && orderbookStatus === "exists" && onlineMode')
                   rp-confirm(
-                    action-text="Are you sure you want to remove this trust line? Ripple Admin Console will attempt to convert the remaining balance of {{ trust.balance }} {{ trust.currency }} into XRP. This action can't be undone."
+                    action-text="Are you sure you want to remove this trust line? ZXCoin Admin Console will attempt to convert the remaining balance of {{ trust.balance }} {{ trust.currency }} into ZXC. This action can't be undone."
                     action-button-text="Convert balance and remove"
                     action-button-css="btn btn-default btn-danger"
                     action-function="delete_line()"
@@ -213,7 +213,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                       button.btn.btn-block.btn-danger.btn-xs.submit(type="button", ng-click="load_orderbook()", l10n) Remove
                 .col-xs-6.col-sm-6.col-md-8.col-lg-9(ng-show='balance !== "0" && orderbookStatus === "not" && onlineMode')
                   rp-confirm(
-                    action-text="Are you sure you want to remove this trust line? Ripple Admin Console will return the balance of {{ trust.balance }} {{ trust.currency }} to the issuer. This action can't be undone."
+                    action-text="Are you sure you want to remove this trust line? ZXCoin Admin Console will return the balance of {{ trust.balance }} {{ trust.currency }} to the issuer. This action can't be undone."
                     action-button-text="Return balance and remove"
                     action-button-css="btn btn-default btn-danger"
                     action-function="delete_line()"
@@ -348,8 +348,8 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                         select.form-control#edit_rippling(name='edit_rippling', ng-model='trust.ripplingFlag'
                         ng-disabled="component.balance !== '0' && isIncomingOnly() && ripplingEnabled()")
                           option(value='') No change
-                          option(value='tfClearNoRipple') Allow Rippling
-                          option(value='tfSetNoRipple') Disallow Rippling
+                          option(value='tfClearNoZXCoin') Allow Rippling
+                          option(value='tfSetNoZXCoin') Disallow Rippling
                       .col-sm-1.form-group-sm
                         label(for='edit_freeze', l10n) Freeze
                         select.form-control#edit_freeze(name='edit_freeze', ng-model='trust.freezeFlag')
@@ -372,7 +372,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                         .row.text-right
                           .col-xs-12(ng-show='trust.balance !== "0" && orderbookStatus === "exists" && onlineMode')
                             rp-confirm(
-                            action-text="Are you sure you want to remove this trust line? Ripple Admin Console will attempt to convert the remaining balance of {{ trust.balance }} {{ currency }} into XRP. This action can't be undone."
+                            action-text="Are you sure you want to remove this trust line? ZXCoin Admin Console will attempt to convert the remaining balance of {{ trust.balance }} {{ currency }} into ZXC. This action can't be undone."
                             action-button-text="Convert balance and remove"
                             action-button-css="btn btn-default btn-danger"
                             action-function="delete_account()"
@@ -382,7 +382,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                               button.btn.btn-block.btn-danger.btn-xs.submit(type="button", ng-click="load_orderbook()", l10n) Remove
                           .col-xs-12(ng-show='trust.balance !== "0" && orderbookStatus === "not" && onlineMode')
                             rp-confirm(
-                            action-text="Are you sure you want to remove this trust line? Ripple Admin Console will return the balance of {{ trust.balance }} {{ currency }} to the issuer. This action can't be undone."
+                            action-text="Are you sure you want to remove this trust line? ZXCoin Admin Console will return the balance of {{ trust.balance }} {{ currency }} to the issuer. This action can't be undone."
                             action-button-text="Return balance and remove"
                             action-button-css="btn btn-default btn-danger"
                             action-function="delete_account()"

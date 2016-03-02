@@ -15,7 +15,7 @@ section.col-xs-12.content(ng-controller='SendCtrl')
         input.form-control#send_destination(
         name='send_destination', type='text'
         rp-combobox="recipient_query"
-        placeholder='Enter a Ripple address or contact'
+        placeholder='Enter a ZXCoin address or contact'
         ng-model='send.recipient', rp-not-me, rp-dest, rp-dest-address, rp-dest-contact
         rp-dest-email, rp-dest-loading="recipient_loading"
         required
@@ -27,7 +27,7 @@ section.col-xs-12.content(ng-controller='SendCtrl')
           .error(rp-error-on='required', l10n)
             | Please enter a recipient.
           .error(rp-error-on='rpDest', l10n)
-            | Recipient should be a contact or Ripple address.
+            | Recipient should be a contact or ZXCoin address.
           .error(rp-error-on='rpNotMe', l10n)
             | Recipient cannot be this wallet address.
     ul.tagsLinks
@@ -141,20 +141,20 @@ section.col-xs-12.content(ng-controller='SendCtrl')
         .error(rp-error-on='rpAmount', l10n) Not a valid amount.
         .error(rp-error-on='rpAmountPositive', l10n) Amount must be greater than zero.
         .error(rp-error-on='rpAmountXrpLimit', l10n)
-          | You are either trying to send too little or too much XRP.
-          | Minimum amount is 0.000001 XRP and maximum amount is 100 billion XRP.
+          | You are either trying to send too little or too much ZXC.
+          | Minimum amount is 0.000001 ZXC and maximum amount is 100 billion ZXC.
         .error(rp-error-on='rpMaxAmount', l10n)
           | This transaction exceeds your balance, you can send
-          |  a max. of {{account.max_spend | rpamount:{rel_precision: 0} }} XRP
-        .error(ng-show="send.recipient_info.disallow_xrp && send.currency_code=='XRP'", l10n)
-          | Recipient does not allow XRP payments. Are you sure you want to send XRP anyway?
+          |  a max. of {{account.max_spend | rpamount:{rel_precision: 0} }} ZXC
+        .error(ng-show="send.recipient_info.disallow_xrp && send.currency_code=='ZXC'", l10n)
+          | Recipient does not allow ZXC payments. Are you sure you want to send ZXC anyway?
         .notice(ng-show="send.trust_limit", l10n) {{send.recipient | rpcontactname}}
           | trusts you for {{send.trust_limit | rpamount}} {{send.trust_limit | rpcurrency}}.
     .row
-      .col-xs-12.col-sm-6.col-md-4(ng-show="onlineMode && send.currency_code == 'XRP'")
+      .col-xs-12.col-sm-6.col-md-4(ng-show="onlineMode && send.currency_code == 'ZXC'")
         button#sendXrpButton.btn.btn-block.btn-success.submit(type='submit'
         ng-disabled='sendForm.$invalid || send.self || !send.recipient_resolved || account.max_spend.to_number() < send.amount * 1000000', l10n)
-          | Send XRP
+          | Send ZXC
     .row
       .col-xs-12.col-sm-6.col-md-4(ng-show="!onlineMode")
         button#sendXrpButton.btn.btn-block.btn-success.submit(type='submit'
@@ -164,7 +164,7 @@ section.col-xs-12.content(ng-controller='SendCtrl')
       //- Messages
       p.literal(ng-show="send.fund_status == 'insufficient-xrp'", l10n)
         | Destination account is unfunded; send at least
-        |  {{send.xrp_deficiency | rpamount}} XRP to fund it.
+        |  {{send.xrp_deficiency | rpamount}} ZXC to fund it.
         a(href="https://ripple.com/wiki/Reserves", target="_blank", l10n)
           | More information
       p.literal(ng-show="send.path_status == 'checking'", rp-spinner="4", l10n)
@@ -173,15 +173,15 @@ section.col-xs-12.content(ng-controller='SendCtrl')
         | Analyzing address
       p.literal(ng-show="send.path_status == 'account-currencies'", rp-spinner="4", l10n)
         | Scanning accepted currencies
-      p.literal(ng-show="send.path_status == 'pending' && send.currency_code != 'XRP' && onlineMode", rp-spinner="4", l10n)
+      p.literal(ng-show="send.path_status == 'pending' && send.currency_code != 'ZXC' && onlineMode", rp-spinner="4", l10n)
         | Calculating paths
-      p.literal(ng-show="send.path_status == 'pending' && send.currency_code == 'XRP' && onlineMode", rp-spinner="4", l10n)
+      p.literal(ng-show="send.path_status == 'pending' && send.currency_code == 'ZXC' && onlineMode", rp-spinner="4", l10n)
         | Calculating alternatives
-      p.literal(ng-show="send.path_status == 'no-path' && send.currency_code != 'XRP'", l10n)
+      p.literal(ng-show="send.path_status == 'no-path' && send.currency_code != 'ZXC'", l10n)
         | You cannot send {{send.amount}} {{send.currency}} to
         |  {{send.recipient}}. Either your account has insufficient funds,
         |  or {{send.recipient}} doesn't accept {{send.currency}}.
-      p.literal(ng-show="send.path_status == 'no-path' && send.currency_code == 'XRP' && send.sender_insufficient_xrp", l10n)
+      p.literal(ng-show="send.path_status == 'no-path' && send.currency_code == 'ZXC' && send.sender_insufficient_xrp", l10n)
         | You cannot send {{send.amount}} {{send.currency}} to
         | {{send.recipient}}. Your account has insufficient funds.
       p.literal(ng-show="send.path_status == 'error-no-currency'", l10n)
@@ -192,9 +192,9 @@ section.col-xs-12.content(ng-controller='SendCtrl')
       .currency_sets(ng-if="send.path_status == 'done'")
         .row.row-padding-small
           .col-xs-12
-            p.literal(ng-show="send.currency_code != 'XRP' && !path_status=='no-path'", l10n)
+            p.literal(ng-show="send.currency_code != 'ZXC' && !path_status=='no-path'", l10n)
               | You can send
-            p.literal(ng-show="send.currency_code == 'XRP' && !path_status=='no-path'", l10n)
+            p.literal(ng-show="send.currency_code == 'ZXC' && !path_status=='no-path'", l10n)
               | Or you can send
         .row.row-padding-small.alternatives(ng-show="send.alternatives.length")
           .col-xs-12.col-sm-6(ng-repeat="alt in send.alternatives")
@@ -231,7 +231,7 @@ section.col-xs-12.content(ng-controller='SendCtrl')
 
   group.mode-wait-path(ng-show='mode=="wait_path" && account.Balance && connected')
     p.literal(rp-spinner="4", l10n)
-      | Ripple is calculating a path for your payment.
+      | ZXCoin is calculating a path for your payment.
 
   //- N3. Confirmation page
 
@@ -279,7 +279,7 @@ section.col-xs-12.content(ng-controller='SendCtrl')
     include ../messages/sendconvert/_localerror
     p: button.btn.btn-link.btn-default(ng-click='cancelConfirm()', l10n) cancel
 
-  //- N5b. Ripple error page
+  //- N5b. ZXCoin error page
   group.mode-ripplerror(ng-show='mode=="rippleerror" && account.Balance && connected')
     rp-transaction-status(rp-engine-result="{{engine_result}}", rp-engine-result-message="{{engine_result_message}}", rp-accepted="{{engine_status_accepted}}")
     group.actions

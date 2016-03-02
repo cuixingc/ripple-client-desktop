@@ -1,8 +1,8 @@
 {
   "main": "index.html",
-  "name": "RippleAdminConsole",
+  "name": "ZXCoinAdminConsole",
   "version": "1.4.0",
-  "description": "Ripple Admin Console",
+  "description": "ZXCoin Admin Console",
   "single-instance": false,
   "window": {
     "frame": true,
@@ -11,6 +11,6 @@
     "height": 650,
     "min_width": 768,
     "min_height": 100,
-    "title": "Ripple Admin Console"
+    "title": "ZXCoin Admin Console"
   }
 }
