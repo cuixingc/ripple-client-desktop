@@ -1,11 +1,11 @@
 {
-  "name": "RippleAdminConsole",
-  "version": "1.4.0",
-  "description": "Desktop client for the Ripple payment network",
+  "name": "ZXCoinAdminConsole",
+  "version": "1.5.0",
+  "description": "Desktop client for the ZXCoin payment network",
   "author": {
-    "name": "Ripple, Inc.",
-    "email": "info@ripple.com",
-    "url": "https://ripple.com/"
+    "name": "Peersafe, Inc.",
+    "email": "info@peersafe.cn",
+    "url": "https://www.peersafe.com/"
   },
   "node-remote": "http://localhost:3000",
   "main": "http://localhost:3000",
@@ -58,7 +58,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ripple/ripple-client.git"
+    "url": "git://github.com/peersafe/ripple-client.git"
   },
   "readmeFilename": "README",
   "devDependencies": {

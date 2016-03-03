@@ -349,7 +349,7 @@ gulp.task('build', function() {
     appName: meta.name + '-' + meta.version,
     appVersion: meta.version,
     buildDir: PACKAGES_FOLDER,
-    macZip: true,
+    Zip: true,
     cacheDir: TMP_DIR,
     version: '0.12.3',
     // TODO: timestamped versions

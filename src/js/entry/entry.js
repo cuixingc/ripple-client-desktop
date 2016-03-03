@@ -199,7 +199,7 @@ app.run(['$rootScope', '$route', '$routeParams', 'rpNW',
   function ($rootScope, $route, $routeParams, rpNW)
   {
     // This is the desktop client
-    $rootScope.productName = 'Ripple Admin Console';
+    $rootScope.productName = 'ZXCoin Admin Console';
 
     // Global reference for debugging only (!)
     if ("object" === typeof rippleclient) {

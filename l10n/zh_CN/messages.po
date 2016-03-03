@@ -358,7 +358,7 @@ msgstr "删除标记"
 
 #: src/templates/tabs/advanced.jade:10
 msgid "This is the only page available when you are not logged in. If you want to access other functionality, please {{1:login}}."
-msgstr "这是您未登录时可用的唯一一页。如果您想访问其他功能，请{ 1：登录}}."
+msgstr "这是您未登录时可用的唯一一页。如果您想访问其他功能，请{{1:登录}}."
 
 #: src/templates/tabs/advanced.jade:13
 #: src/templates/tabs/settings/_navbar.jade:4
@@ -526,7 +526,7 @@ msgstr "连接"
 
 #: src/templates/tabs/asset.jade:48
 msgid "{{1:You are adding a new asset.}}"
-msgstr "{{1.正在创建新资产}}"
+msgstr "{{1:正在创建新资产}}"
 
 #: src/templates/tabs/asset.jade:54
 #: src/templates/tabs/exchange.jade:111
