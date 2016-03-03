@@ -27,7 +27,7 @@ msgstr "信任资产"
 
 #: src/templates/client/_navbar.jade:21
 msgid "New Asset"
-msgstr "创建新资产"
+msgstr "新建资产"
 
 #: src/templates/client/_navbar.jade:24
 msgid "Disconnected from the ZXCoin network"
@@ -55,7 +55,7 @@ msgid "{{copyTooltip}}"
 msgstr "点击拷贝您的账户地址"
 
 #: src/templates/client/_navbar.jade:50
-#: src/templates/tabs/asset.jade:58
+#: src/templates/tabs/asset.jade:53
 #: src/templates/tabs/balance.jade:11
 #: src/templates/tabs/exchange.jade:10
 #: src/templates/tabs/history.jade:228
@@ -329,6 +329,7 @@ msgstr "保存中..."
 #: src/templates/tabs/advanced.jade:50
 #: src/templates/tabs/advanced.jade:91
 #: src/templates/tabs/advanced.jade:147
+#: src/templates/tabs/asset.jade:55
 #: src/templates/tabs/contacts.jade:65
 #: src/templates/tabs/contacts.jade:136
 #: src/templates/tabs/exchange.jade:115
@@ -480,27 +481,24 @@ msgstr "删除"
 msgid "Add new server"
 msgstr "添加服务器"
 
-#: src/templates/tabs/asset.jade:12
-msgid "Currency Code"
+#: src/templates/tabs/asset.jade:10
+msgid "Asset Code"
 msgstr "资产代码"
 
-#: src/templates/tabs/asset.jade:19
-msgid "Currency Name"
-msgstr "资产名称"
-
-#: src/templates/tabs/asset.jade:26
-msgid "Currency Amount"
+#: src/templates/tabs/asset.jade:14
+msgid "Asset Amount"
 msgstr "资产份额"
 
+#: src/templates/tabs/asset.jade:18
+msgid "Show name of asset"
+msgstr "显示资产名称"
+
+#: src/templates/tabs/asset.jade:19
+msgid "Asset Name&nbsp"
+msgstr "资产名称"
+
+#: src/templates/tabs/asset.jade:22
 #: src/templates/tabs/asset.jade:33
-msgid "Show symbol of currency"
-msgstr "显示资产符号"
-
-#: src/templates/tabs/asset.jade:37
-msgid "Currency Symbol&nbsp"
-msgstr "资产符号&nbsp"
-
-#: src/templates/tabs/asset.jade:38
 #: src/templates/tabs/send.jade:41
 #: src/templates/tabs/send.jade:86
 #: src/templates/tabs/trade.jade:394
@@ -509,20 +507,28 @@ msgstr "资产符号&nbsp"
 msgid "hide"
 msgstr "隐藏"
 
-#: src/templates/tabs/asset.jade:46
+#: src/templates/tabs/asset.jade:29
+msgid "Show symbol of asset"
+msgstr "显示资产符号"
+
+#: src/templates/tabs/asset.jade:32
+msgid "Asset Symbol&nbsp"
+msgstr "资产符号&nbsp"
+
+#: src/templates/tabs/asset.jade:41
 msgid "Save Asset"
 msgstr "创建"
 
-#: src/templates/tabs/asset.jade:51
+#: src/templates/tabs/asset.jade:46
 #: src/templates/tabs/trust.jade:185
 msgid "Connect"
 msgstr "连接"
 
-#: src/templates/tabs/asset.jade:53
+#: src/templates/tabs/asset.jade:48
 msgid "{{1:You are adding a new asset.}}"
 msgstr "{{1.正在创建新资产}}"
 
-#: src/templates/tabs/asset.jade:59
+#: src/templates/tabs/asset.jade:54
 #: src/templates/tabs/exchange.jade:111
 #: src/templates/tabs/security.jade:74
 #: src/templates/tabs/send.jade:262
@@ -533,11 +539,11 @@ msgstr "{{1.正在创建新资产}}"
 msgid "Confirm"
 msgstr "确认"
 
-#: src/templates/tabs/asset.jade:74
+#: src/templates/tabs/asset.jade:69
 msgid "Create another asset"
 msgstr "创建另一个资产"
 
-#: src/templates/tabs/asset.jade:76
+#: src/templates/tabs/asset.jade:71
 #: src/templates/tabs/exchange.jade:139
 #: src/templates/tabs/send.jade:311
 #: src/templates/tabs/send.jade:346

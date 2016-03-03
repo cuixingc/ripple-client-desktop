@@ -55,7 +55,7 @@ msgid ""{{copyTooltip}}""
 msgstr ""{{copyTooltip}}""
 
 #: src/templates/client/_navbar.jade:50
-#: src/templates/tabs/asset.jade:58
+#: src/templates/tabs/asset.jade:53
 #: src/templates/tabs/balance.jade:11
 #: src/templates/tabs/exchange.jade:10
 #: src/templates/tabs/history.jade:228
@@ -328,8 +328,7 @@ msgstr "Saving..."
 #: src/templates/tabs/advanced.jade:50
 #: src/templates/tabs/advanced.jade:91
 #: src/templates/tabs/advanced.jade:147
-#: src/templates/tabs/asset.jade:60
-#: src/templates/tabs/asset.jade:63
+#: src/templates/tabs/asset.jade:55
 #: src/templates/tabs/contacts.jade:65
 #: src/templates/tabs/contacts.jade:136
 #: src/templates/tabs/exchange.jade:115
@@ -481,27 +480,24 @@ msgstr "Delete"
 msgid "Add new server"
 msgstr "Add new server"
 
-#: src/templates/tabs/asset.jade:12
-msgid "Currency Code"
-msgstr "Currency Code"
+#: src/templates/tabs/asset.jade:10
+msgid "Asset Code"
+msgstr "Asset Code"
 
-#: src/templates/tabs/asset.jade:19
-msgid "Currency Name"
-msgstr "Currency Name"
+#: src/templates/tabs/asset.jade:14
+msgid "Asset Amount"
+msgstr "Asset Amount"
 
-#: src/templates/tabs/asset.jade:26
-msgid "Currency Amount"
-msgstr "Currency Amount"
+#: src/templates/tabs/asset.jade:18
+msgid "Show name of asset"
+msgstr "Show name of asset"
 
+#: src/templates/tabs/asset.jade:21
+msgid "Asset Name&nbsp"
+msgstr "Asset Name&nbsp"
+
+#: src/templates/tabs/asset.jade:22
 #: src/templates/tabs/asset.jade:33
-msgid "Show symbol of currency"
-msgstr "Show symbol of currency"
-
-#: src/templates/tabs/asset.jade:37
-msgid "Currency Symbol&nbsp"
-msgstr "Currency Symbol&nbsp"
-
-#: src/templates/tabs/asset.jade:38
 #: src/templates/tabs/send.jade:41
 #: src/templates/tabs/send.jade:86
 #: src/templates/tabs/trade.jade:394
@@ -510,20 +506,28 @@ msgstr "Currency Symbol&nbsp"
 msgid "hide"
 msgstr "hide"
 
-#: src/templates/tabs/asset.jade:46
+#: src/templates/tabs/asset.jade:29
+msgid "Show symbol of asset"
+msgstr "Show symbol of asset"
+
+#: src/templates/tabs/asset.jade:32
+msgid "Asset Symbol&nbsp"
+msgstr "Asset Symbol&nbsp"
+
+#: src/templates/tabs/asset.jade:41
 msgid "Save Asset"
 msgstr "Save Asset"
 
-#: src/templates/tabs/asset.jade:51
+#: src/templates/tabs/asset.jade:46
 #: src/templates/tabs/trust.jade:185
 msgid "Connect"
 msgstr "Connect"
 
-#: src/templates/tabs/asset.jade:53
+#: src/templates/tabs/asset.jade:48
 msgid "{{1:You are adding a new asset.}}"
 msgstr "{{1:You are adding a new asset.}}"
 
-#: src/templates/tabs/asset.jade:59
+#: src/templates/tabs/asset.jade:54
 #: src/templates/tabs/exchange.jade:111
 #: src/templates/tabs/security.jade:74
 #: src/templates/tabs/send.jade:262
@@ -534,11 +538,11 @@ msgstr "{{1:You are adding a new asset.}}"
 msgid "Confirm"
 msgstr "Confirm"
 
-#: src/templates/tabs/asset.jade:74
+#: src/templates/tabs/asset.jade:69
 msgid "Create another asset"
 msgstr "Create another asset"
 
-#: src/templates/tabs/asset.jade:76
+#: src/templates/tabs/asset.jade:71
 #: src/templates/tabs/exchange.jade:139
 #: src/templates/tabs/send.jade:311
 #: src/templates/tabs/send.jade:346
