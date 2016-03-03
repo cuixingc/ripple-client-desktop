@@ -360,6 +360,9 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
    * Add trust line
    */
   function addOneTrustLine(memo) {
+	if(memo.amount == undefined || memo.code == undefined)
+		return;
+
 	var amount = ripple.Amount.from_json({value: memo.amount, currency: memo.code, issuer: Options.gateway_address});
 	//amount.set_issuer(Options.gateway_address);
 	if (!amount.is_valid()) {
@@ -486,19 +489,28 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
               $scope.unseenNotifications.count++;
 
 			  // parse memoData
+			  //console.log(JSON.stringify(tx));
+
 			  var response = hex2string(tx.Memos[0].Memo.MemoType);
 			  var memoData = hex2string(tx.Memos[0].Memo.MemoData);
-			  if(response === 'response') {
-				var jsonData = JSON.parse(memoData);
-				if(jsonData.error != undefined) {
-				} else {
-				  if(!is_historic) {
-					var hash = jsonData.hash;
-					//console.log(JSON.stringify(jsonData));
-					addOneTrustLine(jsonData);
-				  }
+			  if(response !== undefined && response === 'response') {
+				try {
+					var jsonData = JSON.parse(memoData);
+					if(jsonData.error != undefined) {
+						console.log('addNewAsset error.');
+					} else {
+						if(!is_historic) {
+							//if(jsonData.hash != undefined)
+							//	var hash = jsonData.hash;
+							console.log(JSON.stringify(jsonData));
+							addOneTrustLine(jsonData);
+						}
+					}
+				} catch(exception) {
+					console.error('json parse error. error: ' 
+						+ exception.message 
+						+ '. data: ' + memoData);
 				}
-				//return;
 			  }
 
 			}
