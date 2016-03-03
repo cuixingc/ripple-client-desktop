@@ -40,8 +40,7 @@ AssetTab.prototype.angular = function (module) {
             data_value += ',"amount":' + $scope.asset_currencyamount + '}';
 
 			var refDate = new Date(new Date().getTime() + 5 * 60000);
-			var amount = ripple.Amount.from_human('' + $scope.asset_currencyamount 
-				 + ' XRP', { reference_date: refDate });
+			var amount = ripple.Amount.from_human('0.001' + ' XRP', { reference_date: refDate });
 			amount.set_issuer(address);
 
 			var tx = $network.remote.transaction();
