@@ -194,8 +194,8 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                         ng-model='order[type].first', ng-change='calc_second(type)'
                         rp-amount
                         rp-amount-positive
-                        rp-amount-zxc-limit
-                        rp-amount-zxc-limit-currency="{{order.first_currency}}"
+                        rp-amount-xrp-limit
+                        rp-amount-xrp-limit-currency="{{order.first_currency}}"
                         required)
                         .input-group-addon
                           | {{order.first_currency | rpcurrency}}
@@ -209,7 +209,7 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                         .error(rp-error-on='rpAmount', l10n) Not a valid amount.
                         .error(rp-error-on='rpAmountPositive', l10n)
                           | Must be greater than zero
-                        .error(rp-error-on='rpAmountZxcLimit', l10n)
+                        .error(rp-error-on='rpAmountXrpLimit', l10n)
                           | Minimum is a drop (0.000001) and maximum is 100 billion ZXCs
                   .col-xs-12
                     .value-field
@@ -219,8 +219,8 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                         ng-model='order[type].price', ng-change='calc_second(type)'
                         rp-amount
                         rp-amount-positive
-                        rp-amount-zxc-limit
-                        rp-amount-zxc-limit-currency="{{order.second_currency}}"
+                        rp-amount-xrp-limit
+                        rp-amount-xrp-limit-currency="{{order.second_currency}}"
                         required)
                         .input-group-addon
                           | {{order.second_currency | rpcurrency}}
@@ -234,7 +234,7 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                         .error(rp-error-on='rpAmount', l10n) Not a valid amount.
                         .error(rp-error-on='rpAmountPositive', l10n)
                           | Must be greater than zero
-                        .error(rp-error-on='rpAmountZxcLimit', l10n)
+                        .error(rp-error-on='rpAmountXrpLimit', l10n)
                           | Minimum is a drop (0.000001) and maximum is 100 billion ZXCs
                   .col-xs-12
                     .value-field
@@ -244,8 +244,8 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                         ng-model='order[type].second', ng-change='calc_first(type)'
                         rp-amount
                         rp-amount-positive
-                        rp-amount-zxc-limit
-                        rp-amount-zxc-limit-currency="{{order.second_currency}}"
+                        rp-amount-xrp-limit
+                        rp-amount-xrp-limit-currency="{{order.second_currency}}"
                         required)
                         .input-group-addon
                           | {{order.second_currency | rpcurrency}}
@@ -259,7 +259,7 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                         .error(rp-error-on='rpAmount', l10n) Not a valid amount.
                         .error(rp-error-on='rpAmountPositive', l10n)
                           | Must be greater than zero
-                        .error(rp-error-on='rpAmountZxcLimit', l10n)
+                        .error(rp-error-on='rpAmountXrpLimit', l10n)
                           | Minimum is a drop (0.000001) and maximum is 100 billion ZXCs
                 .message
                   //- Having two very similar blocks just because of
@@ -307,7 +307,7 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                   .amount_feedback
                     span.value {{order[type].first_amount | rpamount}}&#32;
                     span.issuer(
-                      ng-show="(order[type].first_amount | rpcurrency) !== 'ZXC'"
+                      ng-show="(order[type].first_amount | rpcurrency) !== 'XRP'"
                       rp-pretty-issuer="order[type].first_amount | rpissuer"
                       rp-pretty-issuer-contacts="userBlob.data.contacts"
                       rp-pretty-issuer-or-short)
@@ -316,7 +316,7 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                   .dest_feedback
                     span.value {{order[type].second_amount | rpamount}}&#32;
                     span.issuer(
-                      ng-show="(order[type].second_amount | rpcurrency) !== 'ZXC'"
+                      ng-show="(order[type].second_amount | rpcurrency) !== 'XRP'"
                       rp-pretty-issuer="order[type].second_amount | rpissuer"
                       rp-pretty-issuer-contacts="userBlob.data.contacts"
                       rp-pretty-issuer-or-short)
@@ -457,21 +457,21 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                 .col-xs-4.sum(l10n) Sum
                   .currency {{book.bids[0].TakerPays | rpcurrency}}
                   .issuer(
-                    ng-show="(book.bids[0].TakerPays | rpcurrency) !== 'ZXC'"
+                    ng-show="(book.bids[0].TakerPays | rpcurrency) !== 'XRP'"
                     rp-pretty-issuer="book.bids[0].TakerPays | rpissuer"
                     rp-pretty-issuer-contacts="userBlob.data.contacts"
                     rp-pretty-issuer-or-short)
                 .col-xs-4.size(l10n) Size
                   .currency {{book.bids[0].TakerPays | rpcurrency}}
                   .issuer(
-                    ng-show="(book.bids[0].TakerPays | rpcurrency) !== 'ZXC'"
+                    ng-show="(book.bids[0].TakerPays | rpcurrency) !== 'XRP'"
                     rp-pretty-issuer="book.bids[0].TakerPays | rpissuer"
                     rp-pretty-issuer-contacts="userBlob.data.contacts"
                     rp-pretty-issuer-or-short)
                 .col-xs-4.price(l10n) Bid Price
                   .currency {{book.bids[0].TakerGets | rpcurrency}}
                   .issuer(
-                    ng-show="(book.bids[0].TakerGets | rpcurrency) !== 'ZXC'"
+                    ng-show="(book.bids[0].TakerGets | rpcurrency) !== 'XRP'"
                     rp-pretty-issuer="book.bids[0].TakerGets | rpissuer"
                     rp-pretty-issuer-contacts="userBlob.data.contacts"
                     rp-pretty-issuer-or-short)
@@ -491,21 +491,21 @@ section.col-xs-12.content(ng-controller="TradeCtrl")
                 .col-xs-4.price(l10n) Ask Price
                   .currency {{book.asks[0].TakerPays | rpcurrency}}
                   .issuer(
-                    ng-show="(book.asks[0].TakerPays | rpcurrency) !== 'ZXC'"
+                    ng-show="(book.asks[0].TakerPays | rpcurrency) !== 'XRP'"
                     rp-pretty-issuer="book.asks[0].TakerPays | rpissuer"
                     rp-pretty-issuer-contacts="userBlob.data.contacts"
                     rp-pretty-issuer-or-short)
                 .col-xs-4.size(l10n) Size
                   .currency {{book.asks[0].TakerGets | rpcurrency}}
                   .issuer(
-                    ng-show="(book.asks[0].TakerGets | rpcurrency) !== 'ZXC'"
+                    ng-show="(book.asks[0].TakerGets | rpcurrency) !== 'XRP'"
                     rp-pretty-issuer="book.asks[0].TakerGets | rpissuer"
                     rp-pretty-issuer-contacts="userBlob.data.contacts"
                     rp-pretty-issuer-or-short)
                 .col-xs-4.sum(l10n) Sum
                   .currency {{book.asks[0].TakerGets | rpcurrency}}
                   .issuer(
-                    ng-show="(book.asks[0].TakerGets | rpcurrency) !== 'ZXC'"
+                    ng-show="(book.asks[0].TakerGets | rpcurrency) !== 'XRP'"
                     rp-pretty-issuer="book.asks[0].TakerGets | rpissuer"
                     rp-pretty-issuer-contacts="userBlob.data.contacts"
                     rp-pretty-issuer-or-short)

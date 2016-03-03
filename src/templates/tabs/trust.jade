@@ -159,8 +159,8 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     name='trust_allowrippling',
                     ng-model='ripplingFlag', required)
                     option(value='') Choose rippling
-                    option(value='tfClearNoZXCoin') Allow Rippling
-                    option(value='tfSetNoZXCoin') Disallow Rippling
+                    option(value='tfClearNoRipple') Allow Rippling
+                    option(value='tfSetNoRipple') Disallow Rippling
                 .col-sm-3.allow-rippling.form-group-sm
                   label(for="trust_allowrippling", l10n) Set Freeze
                   i.fa.fa-question-circle.help-icon(
@@ -348,8 +348,8 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                         select.form-control#edit_rippling(name='edit_rippling', ng-model='trust.ripplingFlag'
                         ng-disabled="component.balance !== '0' && isIncomingOnly() && ripplingEnabled()")
                           option(value='') No change
-                          option(value='tfClearNoZXCoin') Allow Rippling
-                          option(value='tfSetNoZXCoin') Disallow Rippling
+                          option(value='tfClearNoRipple') Allow Rippling
+                          option(value='tfSetNoRipple') Disallow Rippling
                       .col-sm-1.form-group-sm
                         label(for='edit_freeze', l10n) Freeze
                         select.form-control#edit_freeze(name='edit_freeze', ng-model='trust.freezeFlag')

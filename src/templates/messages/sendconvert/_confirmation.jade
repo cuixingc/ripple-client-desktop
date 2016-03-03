@@ -22,8 +22,8 @@ group.result-malformed(ng-show='tx_result=="claim"')
   p(ng-switch="engine_result")
     span(ng-switch-when="tecNO_DST", l10n)
       | Error code: The destination account does not exist [tecNO_DST].
-    span(ng-switch-when="tecNO_DST_INSUF_ZXC", l10n)
-      | Error code: Insufficient ZXC sent to destination [tecNO_DST_INSUF_ZXC].
+    span(ng-switch-when="tecNO_DST_INSUF_XRP", l10n)
+      | Error code: Insufficient ZXC sent to destination [tecNO_DST_INSUF_XRP].
     span(ng-switch-default, l10n)
       | Error: {{engine_result_message}}
 group.result-failed(ng-show='tx_result=="failed"')

@@ -25,6 +25,10 @@ msgstr "交易"
 msgid "Trust Lines"
 msgstr "信任资产"
 
+#: src/templates/client/_navbar.jade:21
+msgid "New Asset"
+msgstr "创建新资产"
+
 #: src/templates/client/_navbar.jade:24
 msgid "Disconnected from the ZXCoin network"
 msgstr "连接中断"
@@ -50,7 +54,8 @@ msgstr "已连接到网络."
 msgid "{{copyTooltip}}"
 msgstr "点击拷贝您的账户地址"
 
-#: src/templates/client/_navbar.jade:48
+#: src/templates/client/_navbar.jade:50
+#: src/templates/tabs/asset.jade:58
 #: src/templates/tabs/balance.jade:11
 #: src/templates/tabs/exchange.jade:10
 #: src/templates/tabs/history.jade:228
@@ -145,7 +150,7 @@ msgid "This regular-key wallet is invalid. You may browse this account but canno
 msgstr "这个常用钥匙钱包失效。您可以浏览此账户，但不能执行交易."
 
 #: src/templates/client/layout.jade:5
-msgid "Welcome to {{productName}}, a global value exchange"
+msgid "Welcome to ZXCoin Admin Console, a global value exchange"
 msgstr "欢迎使用众享资产, 全球化资产交易平台"
 
 #: src/templates/client/layout.jade:15
@@ -224,7 +229,7 @@ msgstr "错误码：没有目的地 [tecNO_DST]."
 
 #: src/templates/directives/transactionerror.jade:34
 #: src/templates/messages/sendconvert/_confirmation.jade:25
-msgid "Error code: Insufficient ZXC sent to destination [tecNO_DST_INSUF_ZXC]."
+msgid "Error code: Insufficient ZXC sent to destination [tecNO_DST_INSUF_XRP]."
 msgstr "错误码：送到目的地的ZXP不足[tecNO_DST_INSUF_ZXC]."
 
 #: src/templates/directives/transactionerror.jade:36
@@ -475,6 +480,71 @@ msgstr "删除"
 msgid "Add new server"
 msgstr "添加服务器"
 
+#: src/templates/tabs/asset.jade:12
+msgid "Currency Code"
+msgstr "资产代码"
+
+#: src/templates/tabs/asset.jade:19
+msgid "Currency Name"
+msgstr "资产名称"
+
+#: src/templates/tabs/asset.jade:26
+msgid "Currency Amount"
+msgstr "资产份额"
+
+#: src/templates/tabs/asset.jade:33
+msgid "Show symbol of currency"
+msgstr "显示资产符号"
+
+#: src/templates/tabs/asset.jade:37
+msgid "Currency Symbol&nbsp"
+msgstr "资产符号&nbsp"
+
+#: src/templates/tabs/asset.jade:38
+#: src/templates/tabs/send.jade:41
+#: src/templates/tabs/send.jade:86
+#: src/templates/tabs/trade.jade:394
+#: src/templates/tabs/trade.jade:443
+#: src/templates/tabs/trade.jade:449
+msgid "hide"
+msgstr "隐藏"
+
+#: src/templates/tabs/asset.jade:46
+msgid "Save Asset"
+msgstr "创建"
+
+#: src/templates/tabs/asset.jade:51
+#: src/templates/tabs/trust.jade:185
+msgid "Connect"
+msgstr "连接"
+
+#: src/templates/tabs/asset.jade:53
+msgid "{{1:You are adding a new asset.}}"
+msgstr "{{1.正在创建新资产}}"
+
+#: src/templates/tabs/asset.jade:59
+#: src/templates/tabs/exchange.jade:111
+#: src/templates/tabs/security.jade:74
+#: src/templates/tabs/send.jade:262
+#: src/templates/tabs/trade.jade:88
+#: src/templates/tabs/trade.jade:105
+#: src/templates/tabs/trade.jade:336
+#: src/templates/tabs/trust.jade:198
+msgid "Confirm"
+msgstr "确认"
+
+#: src/templates/tabs/asset.jade:74
+msgid "Create another asset"
+msgstr "创建另一个资产"
+
+#: src/templates/tabs/asset.jade:76
+#: src/templates/tabs/exchange.jade:139
+#: src/templates/tabs/send.jade:311
+#: src/templates/tabs/send.jade:346
+#: src/templates/tabs/send.jade:380
+msgid "Back to balance"
+msgstr "回到资产表页"
+
 #: src/templates/tabs/balance.jade:5
 msgid "You have to be online to see this screen. {{1}}"
 msgstr "你必须在线才能使用. {{1}}"
@@ -695,26 +765,9 @@ msgstr "ZXCoin 正在为您计算兑换路径."
 msgid "{{1:You are exchanging}}{{2}}{{3:to}}{{4}}{{5:You will pay at most}}{{6}}{{7:Are you sure?}}"
 msgstr "{{1:你将把}} {{2}}{{3:交易成}}{{4}}{{5:你最多将花费}}{{6}}{{7:你确定吗？}}"
 
-#: src/templates/tabs/exchange.jade:111
-#: src/templates/tabs/security.jade:74
-#: src/templates/tabs/send.jade:262
-#: src/templates/tabs/trade.jade:88
-#: src/templates/tabs/trade.jade:105
-#: src/templates/tabs/trade.jade:336
-#: src/templates/tabs/trust.jade:198
-msgid "Confirm"
-msgstr "确认"
-
 #: src/templates/tabs/exchange.jade:137
 msgid "Do another conversion"
 msgstr "做另一个转换"
-
-#: src/templates/tabs/exchange.jade:139
-#: src/templates/tabs/send.jade:311
-#: src/templates/tabs/send.jade:346
-#: src/templates/tabs/send.jade:380
-msgid "Back to balance"
-msgstr "回到我的资产表"
 
 #: src/templates/tabs/history.jade:9
 msgid "Transaction history is not available on the offline machine."
@@ -1124,14 +1177,6 @@ msgstr "接收方不能是自己的钱包地址."
 #: src/templates/tabs/send.jade:35
 msgid "Show destination tag"
 msgstr "显示终端标签"
-
-#: src/templates/tabs/send.jade:41
-#: src/templates/tabs/send.jade:86
-#: src/templates/tabs/trade.jade:394
-#: src/templates/tabs/trade.jade:443
-#: src/templates/tabs/trade.jade:449
-msgid "hide"
-msgstr "隐藏"
 
 #: src/templates/tabs/send.jade:50
 msgid "Destination cannot be blank."
@@ -1811,10 +1856,6 @@ msgstr "冻结设置"
 #: src/templates/tabs/trust.jade:166
 msgid "Freeze the trust line <a href=https://ripple.com/build/transactions/#trustset-flags target=_blank>More information</a>"
 msgstr "冻结已信任的资产 <a href=https://ripple.com/build/transactions/#trustset-flags target=_blank>更多信息</a>"
-
-#: src/templates/tabs/trust.jade:185
-msgid "Connect"
-msgstr "连接"
 
 #: src/templates/tabs/trust.jade:187
 msgid "{{1:You are adding a trust line, which means}}{{2:{{ counterparty_address }} can:}}"
