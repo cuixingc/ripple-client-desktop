@@ -17,6 +17,8 @@ nav.navbar(role="navigation", ng-controller="NavbarCtrl", ng-cloak)
             a(href="#/trade", l10n) Trade
           li#nav-fund(ng-class="{active: $route.current.mainMenu == 'fund'}")
             a(href="#/trust", l10n) Trust Lines
+          li#nav-asset(ng-class="{active: $route.current.mainMenu == 'asset'}")
+            a(href="#/asset", l10n) New Asset
         ul.nav.navbar-nav.navbar-right
           li
             span(class="serverStatus {{connected ? 'online' : 'offline'}} {{serverLoad}}"
