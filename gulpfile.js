@@ -12,7 +12,7 @@ var gulp = require('gulp'),
   runSequence = require('run-sequence'),
 
   meta = require('./package.json');
-  //languages = require('./l10n/languages.json').active;
+var languages = require('./l10n/languages.json').active;
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'del', 'browser-sync']
@@ -21,6 +21,7 @@ var $ = require('gulp-load-plugins')({
 var BUILD_DIR = '.build/';
 var TMP_DIR = '.tmp/';
 var PACKAGES_FOLDER = 'packages/';
+var CURRENT_BUILD_DIR = BUILD_DIR;
 
 require('events').EventEmitter.prototype._maxListeners = 100;
 
@@ -246,40 +247,41 @@ gulp.task('templates:dev', function () {
     .pipe(gulp.dest(TMP_DIR + 'templates/en'))
 });
 
-//var languageTasks = [];
+var languageTasks = [];
 
-//languages.forEach(function(language){
-//  gulp.task('templates:' + language.code, function(){
-//    return gulp.src('src/templates/**/*.jade')
-//      .pipe($.jade({
-//        jade: jadeL10n,
-//        languageFile: 'l10n/' + language.code + '/messages.po',
-//        pretty: true
-//      }))
-//      .pipe(gulp.dest(BUILD_DIR + 'templates/' + language.code));
-//  });
+languages.forEach(function(language){
+  gulp.task('templates:' + language.code, function(){
+    return gulp.src('src/templates/**/*.jade')
+      .pipe($.jade({
+        jade: jadeL10n,
+        languageFile: 'l10n/' + language.code + '/messages.po',
+        pretty: true
+      }))
+      .pipe(gulp.dest(CURRENT_BUILD_DIR + 'templates/' + language.code));
+  });
 
-  //languageTasks.push('templates:' + language.code);
-//});
-
-//gulp.task('templates:dist', function(){
-//  runSequence(languageTasks)
-//});
-
-gulp.task('templates:dist', function() {
-  return gulp.src('src/templates/**/*.jade')
-    .pipe($.jade({
-      jade: jadeL10n,
-      languageFile: 'l10n/en/messages.po',
-      pretty: true
-    }))
-    .pipe(gulp.dest(BUILD_DIR + 'templates/en'));
+  languageTasks.push('templates:' + language.code);
 });
+
+gulp.task('templates:dist', function(){
+  runSequence(languageTasks)
+});
+
+//gulp.task('templates:dist', function() {
+//  return gulp.src('src/templates/**/*.jade')
+//    .pipe($.jade({
+//      jade: jadeL10n,
+//      languageFile: 'l10n/en/messages.po',
+//      pretty: true
+//    }))
+//    .pipe(gulp.dest(BUILD_DIR + 'templates/en'));
+//});
 
 // Default Task (Dev environment)
 gulp.task('default', function() {
+	CURRENT_BUILD_DIR = TMP_DIR;
   runSequence(
-    ['clean:dev', 'webpack:dev', 'webpack:vendor:dev', 'less', 'templates:dev',  'gitVersion'],
+    ['clean:dev', 'webpack:dev', 'webpack:vendor:dev', 'less', 'templates:dist',  'gitVersion'],
     'preprocess:dev',
     'serve',
     'nwlaunch'
@@ -292,7 +294,7 @@ gulp.task('default', function() {
   gulp.watch(['src/js/entry/vendor.js'], ['webpack:vendor:dev']);
 
   // Templates
-  gulp.watch(['src/templates/**/*.jade'], ['templates:dev']);
+  gulp.watch(['src/templates/**/*.jade'], ['templates:dist']);
 
   // index.html preprocessing
   $.watch(TMP_DIR + 'templates/en/*.html', function(){
@@ -393,6 +395,7 @@ gulp.task('zip', function() {
 
 // Final product
 gulp.task('packages', function() {
+	CURRENT_BUILD_DIR = BUILD_DIR;
   return runSequence(
     ['clean:dist', 'webpack:dist', 'webpack:vendor:dist', 'less', 'templates:dist', 'static', 'gitVersion'],
     'preprocess:dist',

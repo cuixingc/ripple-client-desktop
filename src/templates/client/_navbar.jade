@@ -17,6 +17,8 @@ nav.navbar(role="navigation", ng-controller="NavbarCtrl", ng-cloak)
             a(href="#/trade", l10n) Trade
           li#nav-fund(ng-class="{active: $route.current.mainMenu == 'fund'}")
             a(href="#/trust", l10n) Trust Lines
+          li#nav-asset(ng-class="{active: $route.current.mainMenu == 'asset'}")
+            a(href="#/asset", l10n) New Asset
         ul.nav.navbar-nav.navbar-right
           li
             span(class="serverStatus {{connected ? 'online' : 'offline'}} {{serverLoad}}"
@@ -29,7 +31,7 @@ nav.navbar(role="navigation", ng-controller="NavbarCtrl", ng-cloak)
                   l10n-rp-popover-content="Network fees are currently higher than your maximum. Fee: {{ fee | rpamount }} ZXC. <a href='#/advanced'>Change fees</a>")
               span(ng-switch-when='mediumLoad'
                   rp-popover, rp-popover-placement='bottom', rp-popover-trigger='hover', rp-popover-delay
-                  l10n-rp-popover-content="'Network fees are currently higher than normal. Fee: {{ fee | rpamount }} ZXC'")
+                  l10n-rp-popover-content="Network fees are currently higher than normal. Fee: {{ fee | rpamount }} ZXC")
               span(ng-switch-when='lowLoad'
                   rp-popover, rp-popover-placement='bottom', rp-popover-trigger='hover', rp-popover-delay
                   l10n-rp-popover-content="Connected to the ZXCoin network. Fee: {{ fee | rpamount }} ZXC")
@@ -109,13 +111,13 @@ nav.navbar(role="navigation", ng-controller="NavbarCtrl", ng-cloak)
           li.settings.dropdown
             a.dropdown-toggle.fa.fa-cog(data-toggle="dropdown")
             ul.dropdown-menu
-              li: a(href="#/security", ng-hide="readOnly", l10n)
+              li: a(href="#/security", ng-hide="readOnly")
                 i.icon-settings
-                |  Settings
+                span(l10n) Settings
               li.divider
-              li: a.logout(ng-click='logout()', l10n)
+              li: a.logout(ng-click='logout()')
                 i.icon-logout
-                |  Log Out
+                span(l10n) Log Out
   .subnav
     .container
       ul(ng-show="$route.current.mainMenu == 'wallet'")
@@ -134,8 +136,8 @@ nav.navbar(role="navigation", ng-controller="NavbarCtrl", ng-cloak)
     .container
       .row
         .col-sm-12.notification-wrapper
-          .alert.alert-default.text-center(l10n)
-            .h4 This regular-key wallet is invalid. You may browse this account but cannot execute transactions.
+          .alert.alert-default.text-center
+            .h4(l10n) This regular-key wallet is invalid. You may browse this account but cannot execute transactions.
 
   //- .subnav(ng-show="$route.current.mainMenu == 'fund'")
     .container

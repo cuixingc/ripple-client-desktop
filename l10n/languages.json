@@ -1,5 +1,9 @@
 {
   "active": [
+    {"code": "en", "name": "english", "nativeName": "English"},
+    {"code": "zh_CN", "name": "chinese_china", "nativeName": "中文"}
+  ],
+  "options": [
     {"code": "ca", "name": "catalan", "nativeName": "Català"},
     {"code": "de", "name": "german", "nativeName": "Deutsch"},
     {"code": "en", "name": "english", "nativeName": "English"},

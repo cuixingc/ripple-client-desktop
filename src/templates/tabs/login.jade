@@ -4,15 +4,15 @@ section.col-xs-12.content(ng-controller="LoginCtrl")
     .col-md-offset-2.col-md-8
       ul.nav.nav-pills
         li(ng-class="{active: mode=='open'}")
-          a(href="", ng-click="mode='open'") Open Account
+          a(href="", ng-click="mode='open'", l10n) Open Account
         li(ng-class="{active: mode=='readOnly'}")
-          a(href="", ng-click="mode='readOnly'") Read Only Mode
+          a(href="", ng-click="mode='readOnly'", l10n) Read Only Mode
         li(ng-class="{active: mode=='coldwallet'}")
-          a(href="", ng-click="mode='coldwallet'") Cold Wallet
+          a(href="", ng-click="mode='coldwallet'", l10n) Cold Wallet
         li(ng-class="{active: mode=='submittxn'}")
-          a(href="#/submit", ng-click="mode='submittxn'") Submit Txn
+          a(href="#/submit", ng-click="mode='submittxn'", l10n) Submit Txn
         li(ng-class="{active: mode=='serversettings'}")
-          a(href="#/advanced", ng-click="mode='serversettings'") Server Settings  
+          a(href="#/advanced", ng-click="mode='serversettings'", l10n) Server Settings  
 
   .row.auth-form-container(ng-show="mode=='open'")
     .col-md-offset-2.col-md-8

@@ -29,7 +29,7 @@ section.col-xs-12.content(ng-controller="AccountFlagsCtrl")
             .descriptor {{opts.description}}
             .row.accountflags-form-row(ng-hide="opts.edit")
               .col-sm-3
-                .description(l10n) {{flag}}
+                .description {{flag}}
               .col-sm-6
                 .description(ng-show="opts.enabled", l10n) Enabled
                 .description(ng-hide="opts.enabled", l10n) Disabled
@@ -39,7 +39,7 @@ section.col-xs-12.content(ng-controller="AccountFlagsCtrl")
                 a.btn.btn-cancel.btn-block(href="", ng-click="opts.edit = true", ng-hide="edit.saving", l10n) edit
             .row.row-padding-small.accountflags-form-row(ng-show="opts.edit")
               .col-sm-3
-                .description(l10n) {{flag}}
+                .description {{flag}}
               .col-sm-4
                 div.helperInput
                   label
@@ -47,24 +47,24 @@ section.col-xs-12.content(ng-controller="AccountFlagsCtrl")
                     span(l10n) Enable
               .col-sm-3
                 button.btn.btn-block.btn-success.btn-xs.submit#save(type='submit'
-                  ng-disabled='serverForm.$invalid || opts.saving', l10n)
-                  span(ng-hide="opts.saving") Save
-                  span(ng-show="opts.saving") Saving...
+                  ng-disabled='serverForm.$invalid || opts.saving')
+                  span(ng-hide="opts.saving", l10n) Save
+                  span(ng-show="opts.saving", l10n) Saving...
               .col-sm-2
                 a.btn.btn-cancel.btn-block(href="", ng-click='cancel()', ng-hide="opts.saving", l10n) cancel
 
           // UI for offline mode
           form.trust-line-form(name="accountsAdvForm", ng-show="!onlineMode")
-            .descriptor(l10n) {{opts.description}}
+            .descriptor {{opts.description}}
             .row.accountflags-form-row(ng-hide="opts.edit")
               .col-sm-3
-                .description(l10n) {{flag}}
+                .description {{flag}}
               .col-sm-6
               .col-sm-3
                 a.btn.btn-cancel.btn-block(href="", ng-click="opts.edit = true", l10n) edit
             .row.accountflags-form-row(ng-show="opts.edit")
               .col-sm-3
-                .description(l10n) {{flag}}
+                .description {{flag}}
               .col-sm-3
                 a.btn.btn-success.btn-block(href="", ng-click='saveOffline("add")', ng-disabled='!$root.sequence || !$root.fee', l10n) Add Flag
               .col-sm-3

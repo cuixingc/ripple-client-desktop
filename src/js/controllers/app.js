@@ -4,6 +4,7 @@
  * The app controller manages the global scope.
  */
 
+var Currency = ripple.Currency;
 var rewriter = require('../util/jsonrewriter'),
   genericUtils = require('../util/generic'),
   Amount = ripple.Amount,
@@ -45,7 +46,11 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
   }
 
   // TODO make this wallet specific
-  $scope.onlineMode = !!store.get('onlineMode');
+  if (store.get('onlineMode') === undefined) {
+    $scope.onlineMode = true;
+  } else {
+    $scope.onlineMode = !!store.get('onlineMode');
+  }
 
   // Remember the onlineMode switch value and handle the connection
   $scope.switchOnlineMode = function(){
@@ -352,10 +357,76 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
   }
 
   /**
+   * Add trust line
+   */
+  function addOneTrustLine(memo) {
+	var amount = ripple.Amount.from_json({value: memo.amount, currency: memo.code, issuer: Options.gateway_address});
+	//amount.set_issuer(Options.gateway_address);
+	if (!amount.is_valid()) {
+	  // Invalid amount. Indicates a bug in one of the validators.
+	  console.error('addOneTrustLine: invalid amount');
+	  return;
+	}
+
+	var tx = $net.remote.transaction();
+	// Add memo to tx
+	tx.addMemo('client', 'rt', $scope.version);
+
+	// Set default flags
+	var flags = [];
+	flags.push('ClearNoRipple');
+	//flags.push('SetAuth');
+	flags.push('SetFreeze');
+
+	console.log('addOneTrustLine: ' + JSON.stringify(amount));
+
+	var maxLedger = Options.tx_last_ledger || 3;
+	tx
+	  //.lastLedger($net.remote._ledger_current_index + maxLedger)
+	  .rippleLineSet($id.account, amount.to_json())
+	  .setFlags(flags)
+	  .on('submitted', function(res) {
+		  console.log('addOneTrustLine: submitted');
+		  $net.remote.on('transaction', handleEvent);
+
+		  function handleEvent(e) {
+			if(e.transaction.hash === tx.hash) {
+			  $net.remote.removeListener('transaction', handleEvent);
+			}
+		  }
+
+	  })
+	  .on('success', function(res) {
+		  console.log('addOneTrustLine: success');
+	  })
+	  .on('error', function(res) {
+		  console.error('addOneTrustLine: error. ' + JSON.stringify(res));
+	  });
+
+	  keychain.requestSecret($id.account, $id.username, function(err, secret) {
+		  // XXX Error handing
+		  if(err)
+			return;
+
+		  tx.secret(secret);
+		  tx.submit();
+	  });
+  }
+
+  /**
    * Process a transaction and add it to the history table.
    */
   function processTxn(tx, meta, is_historic)
   {
+	// convert hex to string
+	var hex2string = function(hexs) {
+	  var hex = String(hexs);
+	  var str = ''; 
+	  for (var i = 0; i < hex.length; i += 2)
+		str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+	  return str;
+	}
+
     var processedTxn = rewriter.processTxn(tx, meta, account);
 
     if (processedTxn && processedTxn.error) {
@@ -413,7 +484,24 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
             if (processedTxn.date > ($scope.userBlob.data.lastSeenTxDate || 0)) {
               processedTxn.unseen = true;
               $scope.unseenNotifications.count++;
-            }
+
+			  // parse memoData
+			  var response = hex2string(tx.Memos[0].Memo.MemoType);
+			  var memoData = hex2string(tx.Memos[0].Memo.MemoData);
+			  if(response === 'response') {
+				var jsonData = JSON.parse(memoData);
+				if(jsonData.error != undefined) {
+				} else {
+				  if(!is_historic) {
+					var hash = jsonData.hash;
+					//console.log(JSON.stringify(jsonData));
+					addOneTrustLine(jsonData);
+				  }
+				}
+				//return;
+			  }
+
+			}
 
             processedTxn.showEffects = effects;
             $scope.events.unshift(processedTxn);

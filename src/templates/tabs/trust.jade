@@ -84,7 +84,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                   |  to trust in ZXC, please use XRR currency code.
               .row
                 .col-xs-12.col-sm-10.col-md-9.form-group
-                  label(for="trust_counterparty") Counterparty Address
+                  label(for="trust_counterparty", l10n) Counterparty Address
                   input.form-control#trust_counterparty(
                     name='trust_counterparty', type='text', rp-combobox="counterparty_query"
                     ng-model='counterparty'
@@ -109,7 +109,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     .error(rp-error-on='rpDest', l10n) Please enter a valid ZXCoin address or contact.
               .row
                 .col-xs-12.form-group
-                  label(for='trust_amount', l10n) Amount
+                  label(for='trust_amount', l10n) Trust Limit
                   .row
                     .col-md-3.col-sm-4.col-xs-3
                       input.form-control.value#trust_amount(name='trust_amount'
@@ -135,7 +135,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                       | Currency field is required
               .row
                 .col-sm-3.allow-rippling.form-group-sm
-                  label(for="tfSetfAuth") Set Authorization
+                  label(for="tfSetfAuth", l10n) Set Authorization
                   i.fa.fa-question-circle.help-icon(
                     rp-popover
                     rp-popover-placement="bottom"
@@ -148,7 +148,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     option(value='') Default
                     option(value='tfSetfAuth') Authorize trust line
                 .col-sm-3.allow-rippling.form-group-sm
-                  label(for="allowrippling") Allow Rippling
+                  label(for="allowrippling", l10n) Allow Rippling
                   i.fa.fa-question-circle.help-icon(
                     rp-popover
                     rp-popover-placement="bottom"
@@ -162,7 +162,7 @@ section.col-xs-12.content(ng-controller="TrustCtrl")
                     option(value='tfClearNoZXCoin') Allow Rippling
                     option(value='tfSetNoZXCoin') Disallow Rippling
                 .col-sm-3.allow-rippling.form-group-sm
-                  label(for="trust_allowrippling") Set Freeze
+                  label(for="trust_allowrippling", l10n) Set Freeze
                   i.fa.fa-question-circle.help-icon(
                     rp-popover
                     rp-popover-placement="bottom"
