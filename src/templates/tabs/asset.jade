@@ -4,37 +4,32 @@ section.col-xs-12.content(ng-controller='AssetCtrl')
     include ../tabs/banner/_unfunded
 
   //- 1. Send form
-
-  form.row-padding-small.mode-form#AssetForm(name="AssetForm", role="form"
-    ng-show='mode=="form" && ((account.Balance && connected) || !onlineMode)')
+  form.row-padding-small.mode-form#AssetForm(name="AssetForm", role="form", ng-show='mode=="form" && ((account.Balance && connected) || !onlineMode)')
     .row.form-group
       .col-xs-12.col-sm-6.col-md-5
-        label(for='asset_currencycode', l10n) Currency Code 
-        input.form-control#asset_currencycode(
-        name='asset_currencycode', type='text'
-        placeholder='Enter code of a asset'
-        ng-model='asset_currencycode')
+        label(for='asset_currencycode', l10n) Asset Code 
+        input.form-control#asset_currencycode(name='asset_currencycode', type='text', placeholder='Enter code of a asset', ng-model='asset_currencycode')
     .row.form-group
       .col-xs-12.col-sm-6.col-md-5
-        label(for='asset_currencyname', l10n) Currency Name 
+        label(for='asset_currencyamount', l10n) Asset Amount 
+        input.form-control#asset_currencyamount(name='asset_currencyamount', type='number', placeholder='0.00', ng-model='asset_currencyamount')
+    .row.form-group
+      .col-xs-12.col-sm-8.col-md-6
+        a(href="", ng-click="show_name_field = true", ng-hide="show_name_field", l10n) Show name of asset
+    .row.form-group(ng-show='show_name_field')
+      .col-xs-12.col-sm-6.col-md-5
+        label(for='asset_currencyname', l10n) Asset Name&nbsp
+        a(href="", ng-click="show_name_field = false", l10n) hide
         input.form-control#asset_currencyname(
         name='asset_currencyname', type='text'
         placeholder='Enter name of a asset'
         ng-model='asset_currencyname')
     .row.form-group
-      .col-xs-12.col-sm-6.col-md-5
-        label(for='asset_currencyamount', l10n) Currency Amount 
-        input.form-control#asset_currencyamount(
-        name='asset_currencyamount', type='number'
-        placeholder='0.00'
-        ng-model='asset_currencyamount')
-    .row.form-group
       .col-xs-12.col-sm-8.col-md-6
-        a(href="", ng-click="show_symbol_field = true"
-          ng-hide="show_symbol_field", l10n) Show symbol of currency 
+        a(href="", ng-click="show_symbol_field = true", ng-hide="show_symbol_field", l10n) Show symbol of asset
     .row.form-group(ng-show='show_symbol_field')
       .col-xs-12.col-sm-8.col-md-6
-        label(for='asset_currencysymbol', l10n) Currency Symbol&nbsp 
+        label(for='asset_currencysymbol', l10n) Asset Symbol&nbsp 
         a(href="", ng-click="show_symbol_field = false", l10n) hide
         input.form-control#asset_currencysymbol(
         name='asset_currencysymbol', type='text'
@@ -59,9 +54,9 @@ section.col-xs-12.content(ng-controller='AssetCtrl')
                   span(ng-hide="loading", l10n) Confirm
                 button.modal-btn.btn.btn-cancel.btn-md.btn-cancel(data-dismiss="modal",
                   ng-click='toggle_form()', ng-hide="loading", l10n) cancel
-      .col-xs-4.col-sm-3.col-md-3
-        button.btn.btn-block.btn-cancel(type="button" 
-            ng-click='toggle_form()', l10n) cancel
+      //- .col-xs-4.col-sm-3.col-md-3
+      //-  button.btn.btn-block.btn-cancel(type="button" 
+      //-      ng-click='toggle_form()', l10n) cancel
 
   group.mode-ripplerror(ng-show='mode=="rippleerror" && account.Balance && connected')
     rp-transaction-status(rp-engine-result="{{engine_result}}", rp-engine-result-message="{{engine_result_message}}", rp-accepted="{{engine_status_accepted}}")
