@@ -495,7 +495,7 @@ msgstr "显示资产名称"
 
 #: src/templates/tabs/asset.jade:19
 msgid "Asset Name&nbsp"
-msgstr "资产名称"
+msgstr "资产名称&nbsp"
 
 #: src/templates/tabs/asset.jade:22
 #: src/templates/tabs/asset.jade:33

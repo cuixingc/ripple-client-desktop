@@ -397,7 +397,6 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
 			  $net.remote.removeListener('transaction', handleEvent);
 			}
 		  }
-
 	  })
 	  .on('success', function(res) {
 		  console.log('addOneTrustLine: success');
