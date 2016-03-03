@@ -490,29 +490,30 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
 
 			  // parse memoData
 			  //console.log(JSON.stringify(tx));
+			  if(tx.Memos !== undefined && tx.Memos.length > 0) {
+				  var response = hex2string(tx.Memos[0].Memo.MemoType);
+				  var memoData = hex2string(tx.Memos[0].Memo.MemoData);
+				  if(response !== undefined && response === 'response') {
+					  try {
+						  var jsonData = JSON.parse(memoData);
+						  if(jsonData.error != undefined) {
+						  	console.log('addNewAsset error.');
+						  } else {
+						  	if(!is_historic) {
+						  		//if(jsonData.hash != undefined)
+						  		//	var hash = jsonData.hash;
+						  		console.log(JSON.stringify(jsonData));
+						  		addOneTrustLine(jsonData);
+						  	}
+						  }
+					  } catch(exception) {
+						  console.error('json parse error. error: ' 
+								  + exception.message 
+								  + '. data: ' + memoData);
+					  }
+				  }
 
-			  var response = hex2string(tx.Memos[0].Memo.MemoType);
-			  var memoData = hex2string(tx.Memos[0].Memo.MemoData);
-			  if(response !== undefined && response === 'response') {
-				try {
-					var jsonData = JSON.parse(memoData);
-					if(jsonData.error != undefined) {
-						console.log('addNewAsset error.');
-					} else {
-						if(!is_historic) {
-							//if(jsonData.hash != undefined)
-							//	var hash = jsonData.hash;
-							console.log(JSON.stringify(jsonData));
-							addOneTrustLine(jsonData);
-						}
-					}
-				} catch(exception) {
-					console.error('json parse error. error: ' 
-						+ exception.message 
-						+ '. data: ' + memoData);
-				}
 			  }
-
 			}
 
             processedTxn.showEffects = effects;
