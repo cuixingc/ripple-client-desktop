@@ -182,10 +182,10 @@ app.config(['$routeProvider', function ($routeProvider) {
       	//console.log(Options.activate_url);
         $.get(Options.activate_url + address)
           .success(function() {
-          	console.log("Activated successfully.");
+          	alert("Activated successfully.");
           	location.href = location.protocol + '//' + location.hostname  + port + '/#/balance';
           }).error(function() {
-          	console.log("Activated failed.");
+          	alert("Activated failed.");
           	location.href = location.protocol + '//' + location.hostname  + port + '/#/balance';
           });
       }

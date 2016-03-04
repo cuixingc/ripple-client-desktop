@@ -495,8 +495,8 @@ module.controller('AppCtrl', ['$rootScope', '$compile', 'rpId', 'rpNetwork',
 				  if(response !== undefined && response === 'response') {
 					  try {
 						  var jsonData = JSON.parse(memoData);
-						  if(jsonData.error != undefined) {
-						  	console.log('addNewAsset error.');
+						  if(jsonData.result != 0) {
+							alert('addNewAsset error.' + jsonData.reason);
 						  } else {
 						  	if(!is_historic) {
 						  		//if(jsonData.hash != undefined)
